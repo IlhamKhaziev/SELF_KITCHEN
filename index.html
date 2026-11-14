@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кейс «Безопасная кухня» — Презентация</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F7F6F2',
+            card: '#FFFFFF',
+            ink: '#141518',
+            muted: '#5A606E',
+            line: '#DCD9D0',
+            copper: '#D9531E',
+            danger: '#C82828',
+            safe: '#1B7F5C',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Инженерная сетка чертёжной бумаги */
+    body {
+      background-color: #F7F6F2;
+      color: #141518;
+      background-image:
+        linear-gradient(to right, rgba(20, 21, 24, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(20, 21, 24, 0.045) 1px, transparent 1px),
+        linear-gradient(to right, rgba(20, 21, 24, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(20, 21, 24, 0.02) 1px, transparent 1px);
+      background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+      overflow-x: hidden;
+    }
+
+    /* Плавный переход слайдов */
+    .slide {
+      display: none;
+    }
+    .slide.active {
+      display: flex;
+      animation: slideEnter 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes slideEnter {
+      from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.992);
+      }
+      to {
+        opacity: 1;
+    /* Каскадное появление элементов с лёгким пружинящим подпрыгиванием */
+    .slide.active .anim-item {
+      opacity: 0;
+      animation: itemHopIn 0.52s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    .slide.active .delay-1 { animation-delay: 0.06s; }
+    .slide.active .delay-2 { animation-delay: 0.12s; }
+    .slide.active .delay-3 { animation-delay: 0.18s; }
+    .slide.active .delay-4 { animation-delay: 0.24s; }
+    .slide.active .delay-5 { animation-delay: 0.30s; }
+
+    @keyframes itemHopIn {
+      0% {
+        opacity: 0;
+        transform: translateY(16px) scale(0.985);
+      }
+      70% {
+        opacity: 1;
+        transform: translateY(-4px) scale(1.006);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Анимация бегущего тока по проводам */
+    @keyframes flowDashFast {
+      to { stroke-dashoffset: -24; }
+    }
+    @keyframes flowDashNormal {
+      to { stroke-dashoffset: -24; }
+    }
+    .flow-overload {
+      stroke-dasharray: 6 6;
+      animation: flowDashFast 0.4s linear infinite;
+    }
+    .flow-branch {
+      stroke-dasharray: 4 8;
+      animation: flowDashNormal 1.1s linear infinite;
+    }
+    .flow-safe {
+      stroke-dasharray: 5 7;
+      animation: flowDashNormal 0.85s linear infinite;
+    }
+
+    /* Анимация живой синусоиды переменного тока */
+    @keyframes waveShift {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-40px); }
+    }
+    .ac-wave-anim {
+      animation: waveShift 1.4s linear infinite;
+    }
+
+    /* Пульсация перегретого резистора и опасных индикаторов */
+    @keyframes heatPulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(200, 40, 40, 0.25);
+      }
+      50% {
+        box-shadow: 0 0 0 8px rgba(200, 40, 40, 0);
+      }
+    }
+    .danger-pulse {
+      animation: heatPulse 2.2s infinite;
+    }
+
+    @keyframes svgHeatGlow {
+      0%, 100% { fill: #FFF5F5; stroke-width: 3; }
+      50% { fill: #FEE2E2; stroke-width: 4; }
+    }
+    .resistor-hot {
+      animation: svgHeatGlow 1.3s ease-in-out infinite;
+    }
+
+    /* Плавный рост столбцов диаграммы при открытии слайда 6 */
+    .bar-grow {
+      transform-origin: bottom;
+      transform: scaleY(0);
+      transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .slide.active .bar-grow {
+    /* Лёгкий прыжок карточки при наведении курсора */
+    .hover-lift {
+      transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease, border-color 0.25s ease;
+    }
+    .hover-lift:hover {
+      transform: translateY(-5px) scale(1.01);
+      box-shadow: 0 12px 24px -8px rgba(20, 21, 24, 0.12);
+    }
+    .hover-lift:active {
+      transform: translateY(-1px) scale(0.995);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased selection:bg-copper/20 selection:text-ink">
+
+  <!-- Верхний прогресс-бар -->
+  <div class="fixed top-0 left-0 right-0 h-1.5 bg-line/70 z-50">
+    <div id="progressBar" class="h-full bg-copper transition-all duration-500 ease-out" style="width: 10%;"></div>
+  </div>
+
+  <!-- Лаконичная верхняя панель без докладчиков -->
+  <header class="w-full border-b border-line bg-paper/90 backdrop-blur-sm px-4 sm:px-8 py-2.5 flex items-center justify-between gap-2 z-40 sticky top-1.5">
+    <div class="flex items-center gap-3">
+      <span class="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded border border-ink/20 bg-white">
+        <span class="w-2 h-2 rounded-full bg-copper animate-ping" style="animation-duration: 2.5s;"></span>
+        КЕЙС // ЭЛЕКТРОТЕХНИКА
+      </span>
+      <span id="headerSlideTitle" class="hidden sm:inline-block text-sm font-medium text-muted truncate max-w-md">
+        1. Титульный лист
+      </span>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <span id="headerCounter" class="font-mono text-xs font-bold px-3 py-1 rounded border border-line bg-white text-ink">
+        01 / 10
+      </span>
+    </div>
+  </header>
+
+  <!-- Контейнер слайдов -->
+  <main class="flex-1 flex flex-col justify-center max-w-6xl w-full mx-auto px-4 sm:px-8 py-6 sm:py-8">
+
+    <!-- ==================== СЛАЙД 1: ТИТУЛЬНЫЙ ==================== -->
+    <section class="slide active flex-col justify-between min-h-[75vh] bg-card border border-line rounded-2xl p-6 sm:p-12 shadow-sm relative overflow-hidden" data-title="Титульный лист">
+      <!-- Декоративная анимированная синусоида в правом верхнем углу -->
+      <svg class="hidden md:block absolute right-8 top-20 w-72 h-24 opacity-15 pointer-events-none" viewBox="0 0 240 80">
+        <g class="ac-wave-anim">
+          <path d="M0,40 Q10,5 20,40 T40,40 T60,40 T80,40 T100,40 T120,40 T140,40 T160,40 T180,40 T200,40 T220,40 T240,40 T260,40 T280,40" fill="none" stroke="#D9531E" stroke-width="3"/>
+        </g>
+      </svg>
+
+      <!-- Верхний штамп -->
+      <div class="anim-item flex flex-wrap items-center justify-between gap-2 border-b border-line pb-4">
+        <span class="font-mono text-xs sm:text-sm font-bold tracking-widest uppercase text-copper">
+          КЕЙС ПО ЭЛЕКТРОТЕХНИКЕ И ЭЛЕКТРОНИКЕ
+        </span>
+        <span class="font-mono text-xs text-muted border border-line px-2.5 py-1 rounded bg-paper">
+          ЛИСТ 01 / 10 • ИНЖЕНЕРНЫЙ АНАЛИЗ
+        </span>
+      </div>
+
+      <!-- Центральный заголовок -->
+      <div class="my-auto py-8">
+        <div class="anim-item delay-1 inline-flex flex-wrap items-center gap-2 font-mono text-xs text-muted mb-5">
+          <span class="px-2.5 py-1 bg-paper border border-line rounded font-medium text-ink">Сеть 230 В ~ 50 Гц</span>
+          <span class="px-2.5 py-1 bg-danger/10 border border-danger/30 text-danger rounded font-bold">Нагрузка 6,35 кВт (27,6 А)</span>
+          <span class="px-2.5 py-1 bg-safe/10 border border-safe/30 text-safe rounded font-semibold">3 отдельные линии + УЗО</span>
+        </div>
+
+        <h1 class="anim-item delay-2 text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-ink mb-5 leading-none">
+          Безопасная <span class="text-copper">кухня</span>
+        </h1>
+
+        <p class="anim-item delay-3 text-lg sm:text-2xl text-muted max-w-3xl leading-relaxed font-normal">
+          Чайник, микроволновка, холодильник и плита на одном удлинителе: чем это опасно и как сделать правильно
+        </p>
+      </div>
+
+      <!-- Нижний блок: ТОЛЬКО авторы и проверяющий -->
+      <div class="anim-item delay-4 grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-line">
+        <div class="bg-paper border border-line rounded-xl p-4 sm:p-5 hover-lift">
+          <div class="font-mono text-[11px] uppercase tracking-wider text-muted mb-1">Выполнили</div>
+          <div class="text-base sm:text-lg font-bold text-ink">Хазиев Ильхам и Мацаев Юсуф • Группа РО 243</div>
+        </div>
+
+        <div class="bg-paper border border-line rounded-xl p-4 sm:p-5 hover-lift">
+          <div class="font-mono text-[11px] uppercase tracking-wider text-muted mb-1">Руководитель / Преподаватель</div>
+          <div class="text-base sm:text-lg font-bold text-ink">Проверил: Егенова Б. Ж.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== СЛАЙД 2: ПРОБЛЕМА И АКТУАЛЬНОСТЬ ==================== -->
+    <section class="slide flex-col justify-between min-h-[75vh] bg-card border border-line rounded-2xl p-6 sm:p-10 shadow-sm" data-title="Проблема и актуальность">
+      <div class="anim-item flex items-center justify-between border-b border-line pb-3 mb-6">
+        <div>
+          <span class="font-mono text-xs uppercase text-copper font-semibold">02 // Постановка проблемы</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-ink">Проблема и актуальность</h2>
+        </div>
+        <span class="font-mono text-xs text-muted bg-paper border border-line px-2.5 py-1 rounded">02 / 10</span>
+      </div>
+
+      <!-- 3 ключевые цифры с анимацией счёта -->
+      <div class="anim-item delay-1 grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+        <div class="bg-danger/5 border-2 border-danger/40 rounded-xl p-5 danger-pulse hover-lift">
+          <div class="font-mono text-xs uppercase text-danger font-semibold mb-1">Суммарный ток приборов</div>
+          <div class="font-mono text-3xl sm:text-4xl font-extrabold text-danger">
+            <span class="count-up" data-target="27.6" data-decimals="1">27,6</span> А
+          </div>
+          <div class="text-xs text-muted mt-1">Нагрузка 6,35 кВт в одном шнуре</div>
+        </div>
+        <div class="bg-paper border border-line rounded-xl p-5 hover-lift">
+          <div class="font-mono text-xs uppercase text-muted font-semibold mb-1">Норма удлинителя</div>
+          <div class="font-mono text-3xl sm:text-4xl font-extrabold text-ink">
+            <span class="count-up" data-target="10" data-decimals="0">10</span> А
+          </div>
+          <div class="text-xs text-muted mt-1">Медный провод сечением 0,75 мм²</div>
+        </div>
+        <div class="bg-copper/10 border border-copper/40 rounded-xl p-5 hover-lift">
+          <div class="font-mono text-xs uppercase text-copper font-semibold mb-1">Превышение нормы</div>
+          <div class="font-mono text-3xl sm:text-4xl font-extrabold text-copper">
+            ×<span class="count-up" data-target="2.8" data-decimals="1">2,8</span> раза
+          </div>
+          <div class="text-xs text-muted mt-1">Критическая перегрузка (+176%)</div>
+        </div>
+      </div>
+
+      <!-- Что происходит и Чем это опасно -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-auto">
+        <div class="anim-item delay-2 bg-paper border border-line rounded-xl p-5 hover-lift">
+          <h3 class="text-base font-bold uppercase tracking-wide text-ink mb-3 flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-sm bg-ink"></span> Что происходит на кухне
+          </h3>
+          <ul class="space-y-3 text-sm sm:text-base text-ink/90">
+            <li class="flex items-start gap-2.5">
+              <span class="font-mono text-copper font-bold">01.</span>
+              <span>Чайник, СВЧ, холодильник и электроплита включены в один удлинитель <strong class="font-mono">5 м (0,75 мм²)</strong>.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="font-mono text-copper font-bold">02.</span>
+              <span>Автомат в щитке на <strong class="font-mono">25 А</strong> защищает кабель в стене, но <strong>не спасает</strong> тонкий провод удлинителя.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="font-mono text-copper font-bold">03.</span>
+              <span>Приборов на кухне становится больше, а привычка «всё в один тройник» остаётся прежней.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="anim-item delay-3 bg-danger/5 border border-danger/25 rounded-xl p-5 hover-lift">
+          <h3 class="text-base font-bold uppercase tracking-wide text-danger mb-3 flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-sm bg-danger"></span> Три главных риска
+          </h3>
+          <div class="space-y-3">
+            <div class="bg-white border border-danger/20 rounded-lg p-3 hover-lift">
+              <div class="font-bold text-sm text-ink">1. Перегрев провода и пожар</div>
+              <div class="text-xs text-muted">Изоляция шнура и пластик вилки плавятся за считанные минуты.</div>
+            </div>
+            <div class="bg-white border border-danger/20 rounded-lg p-3 hover-lift">
+              <div class="font-bold text-sm text-ink">2. Поражение током на влажной кухне</div>
+              <div class="text-xs text-muted">Рядом вода, мойка и металлические трубы при отсутствии УЗО.</div>
+            </div>
+            <div class="bg-white border border-danger/20 rounded-lg p-3 hover-lift">
+              <div class="font-bold text-sm text-ink">3. Отключение холодильника</div>
+              <div class="text-xs text-muted">Срабатывание защиты обесточит холодильник и испортит продукты.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== СЛАЙД 3: ОСНОВНЫЕ ПОНЯТИЯ ==================== -->
+    <section class="slide flex-col justify-between min-h-[75vh] bg-card border border-line rounded-2xl p-6 sm:p-10 shadow-sm" data-title="Основные понятия">
+      <div class="anim-item flex items-center justify-between border-b border-line pb-3 mb-6">
+        <div>
+          <span class="font-mono text-xs uppercase text-copper font-semibold">03 // Теоретическая база</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-ink">Основные понятия простым языком</h2>
+        </div>
+        <span class="font-mono text-xs text-muted bg-paper border border-line px-2.5 py-1 rounded">03 / 10</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-auto">
+        <!-- Карточка 1: Переменный и постоянный ток с живой волной -->
+        <div class="anim-item delay-1 bg-paper border border-line rounded-xl p-5 flex flex-col justify-between hover-lift">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-xl font-extrabold px-3 py-1 rounded bg-ink text-paper">~ и =</span>
+            <!-- Мини-осциллограмма -->
+            <svg class="w-28 h-8" viewBox="0 0 120 32">
+              <g class="ac-wave-anim">
+                <path d="M0,16 Q5,2 10,16 T20,16 T30,16 T40,16 T50,16 T60,16 T70,16 T80,16" fill="none" stroke="#141518" stroke-width="2"/>
+              </g>
+              <line x1="68" y1="8" x2="116" y2="8" stroke="#D9531E" stroke-width="2.5"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-ink mb-2">Переменный и постоянный ток</h3>
+          <p class="text-sm text-ink/85 leading-relaxed">
+            В розетке течёт <strong>переменный ток (~) 230 В, 50 Гц</strong> — на нём напрямую греют чайник и плита. <strong>Постоянный ток (=)</strong> появляется внутри микроволновки и холодильника после выпрямителя для питания электроники и магнетрона.
+          </p>
+        </div>
+
+        <!-- Карточка 2 -->
+        <div class="anim-item delay-2 bg-paper border border-line rounded-xl p-5 flex flex-col justify-between hover-lift">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-xl font-extrabold px-3 py-1 rounded bg-copper text-white">P = U · I</span>
+            <span class="font-mono text-xs text-muted uppercase">Нагрузка</span>
+          </div>
+          <h3 class="text-lg font-bold text-ink mb-2">Мощность и сила тока</h3>
+          <p class="text-sm text-ink/85 leading-relaxed">
+            Ток прибора равен <span class="font-mono font-semibold bg-white px-1.5 py-0.5 rounded border border-line">I = P / U</span>. Напряжение в розетке постоянное (230 В), поэтому чем мощнее прибор, тем больший ток он «тянет» через провод.
+          </p>
+        </div>
+
+        <!-- Карточка 3 -->
+        <div class="anim-item delay-3 bg-paper border border-line rounded-xl p-5 flex flex-col justify-between hover-lift">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-xl font-extrabold px-3 py-1 rounded bg-danger text-white">P = I² · R</span>
+            <span class="font-mono text-xs text-danger font-bold uppercase">×2 ток → ×4 тепло</span>
+          </div>
+          <h3 class="text-lg font-bold text-ink mb-2">Нагрев провода и контактов</h3>
+          <p class="text-sm text-ink/85 leading-relaxed">
+            Тепло в проводе растёт как <strong>квадрат тока</strong>: если ток увеличился вдвое (<span class="font-mono">×2</span>), нагрев возрастает вчетверо (<span class="font-mono">×4</span>). А тонкий провод имеет большое сопротивление <span class="font-mono">R = ρ·l/S</span>.
+          </p>
+        </div>
+
+        <!-- Карточка 4 -->
+        <div class="anim-item delay-4 bg-paper border border-line rounded-xl p-5 flex flex-col justify-between hover-lift">
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono text-xl font-extrabold px-3 py-1 rounded bg-safe text-white">А + УЗО</span>
+            <span class="font-mono text-xs text-muted uppercase">Защита сети</span>
+          </div>
+          <h3 class="text-lg font-bold text-ink mb-2">Автомат и УЗО — разные задачи</h3>
+          <p class="text-sm text-ink/85 leading-relaxed">
+            <strong>Автомат</strong> защищает <em>кабель от пожара</em> (отключает перегрузку и короткое замыкание). <strong>УЗО (30 мА)</strong> защищает <em>человека от удара током</em>, мгновенно отключая сеть при утечке.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== СЛАЙД 4: ИСХОДНЫЕ ДАННЫЕ + ЖИВОЙ СИМУЛЯТОР ==================== -->
+    <section class="slide flex-col justify-between min-h-[75vh] bg-card border border-line rounded-2xl p-6 sm:p-10 shadow-sm" data-title="Исходные данные и симулятор">
+      <div class="anim-item flex flex-wrap items-center justify-between gap-2 border-b border-line pb-3 mb-4">
+        <div>
+          <span class="font-mono text-xs uppercase text-copper font-semibold">04 // Интерактивный стенд</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-ink">Исходные данные и симулятор нагрузки</h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="resetSimulator()" class="font-mono text-xs px-3 py-1.5 rounded-lg border border-line bg-paper hover:border-ink transition-colors cursor-pointer">
+            Включить все (Сброс)
+          </button>
+          <span class="font-mono text-xs text-muted bg-paper border border-line px-2.5 py-1 rounded">04 / 10</span>
+        </div>
+      </div>
+
+      <p class="anim-item delay-1 text-xs sm:text-sm text-muted mb-4">
+        Нажимайте на строки приборов в таблице, чтобы вживую увидеть, как меняется суммарный ток и нагрев удлинителя <span class="font-mono text-ink font-semibold">10 А</span>:
+      </p>
+
+      <div class="anim-item delay-2 grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto">
+        <!-- Интерактивная таблица приборов -->
+        <div class="lg:col-span-8 overflow-x-auto border border-line rounded-xl">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-paper border-b border-line font-mono text-xs uppercase text-muted">
+                <th class="py-3 px-3">Состояние</th>
+                <th class="py-3 px-3">Прибор</th>
+                <th class="py-3 px-3 text-right">Мощность</th>
+                <th class="py-3 px-3 text-right">Ток I = P/U</th>
+                <th class="py-3 px-3 text-right hidden sm:table-cell">Работа/сут</th>
+              </tr>
+            </thead>
+            <tbody id="applianceTableBody" class="divide-y divide-line text-sm">
+              <!-- Генерируется JS -->
+            </tbody>
+            <tfoot>
+              <tr id="simTotalRow" class="bg-danger/10 border-t-2 border-danger font-bold transition-colors">
+                <td class="py-3 px-3 font-mono text-xs uppercase text-danger" id="simStatusBadge">ПЕРЕГРУЗКА</td>
+                <td class="py-3 px-3">ИТОГО В УДЛИНИТЕЛЕ</td>
+                <td class="py-3 px-3 text-right font-mono" id="simTotalPower">6350 Вт</td>
+                <td class="py-3 px-3 text-right font-mono text-base" id="simTotalCurrent">27,61 А</td>
+                <td class="py-3 px-3 text-right font-mono text-xs text-muted hidden sm:table-cell">6,6 кВт·ч/сут</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <!-- Правая колонка: Живой индикатор удлинителя и условия -->
+        <div class="lg:col-span-4 flex flex-col justify-between gap-4">
+          <div id="simMeterCard" class="border-2 border-danger bg-danger/5 rounded-xl p-4 transition-all duration-300">
+            <div class="flex items-center justify-between mb-1">
+              <span class="font-mono text-xs uppercase font-bold text-muted">Шкала удлинителя (10 А)</span>
+              <span id="simRatioLabel" class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-danger text-white">276%</span>
+            </div>
+            <div class="w-full h-4 bg-white border border-line rounded-full overflow-hidden my-2 relative">
+              <!-- Отметка 10 А (33.3% от шкалы 30 А) -->
+              <div class="absolute top-0 bottom-0 left-1/3 w-0.5 bg-ink/40 z-10"></div>
+              <div id="simBarFill" class="h-full bg-danger transition-all duration-300" style="width: 92%;"></div>
+            </div>
+            <div class="flex justify-between font-mono text-xs text-muted">
+              <span>0 А</span>
+              <span class="text-ink font-semibold">Норма: 10 А</span>
+              <span>30 А</span>
+            </div>
+            <div class="mt-3 pt-3 border-t border-line/80 flex items-center justify-between text-xs">
+              <span class="text-muted">Потери тепла в проводе:</span>
+              <span id="simHeatLoss" class="font-mono font-bold text-danger text-sm">178 Вт</span>
+            </div>
+          </div>
+
+          <div class="bg-paper border border-line rounded-xl p-4 text-xs space-y-1.5">
+            <div class="font-mono font-bold uppercase text-ink mb-1">Условия расчёта:</div>
+            <div class="flex justify-between"><span class="text-muted">Сеть:</span> <span class="font-mono font-semibold">230 В, 50 Гц</span></div>
+            <div class="flex justify-between"><span class="text-muted">Удлинитель:</span> <span class="font-mono font-semibold">5 м, медь 0,75 мм² (10 А)</span></div>
+            <div class="flex justify-between"><span class="text-muted">Автомат в щитке:</span> <span class="font-mono font-semibold">25 А</span></div>
+            <div class="flex justify-between"><span class="text-muted">Тариф:</span> <span class="font-mono font-semibold">25 тг/кВт·ч (условный)</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== СЛАЙД 5: СХЕМА ЦЕПИ И ВИДЫ ТОКА ==================== -->
+    <section class="slide flex-col justify-between min-h-[75vh] bg-card border border-line rounded-2xl p-6 sm:p-10 shadow-sm" data-title="Схема цепи и виды тока">
+      <div class="anim-item flex items-center justify-between border-b border-line pb-3 mb-4">
+        <div>
+          <span class="font-mono text-xs uppercase text-copper font-semibold">05 // Принципиальная схема</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-ink">Схема исходной цепи и виды тока</h2>
+        </div>
+        <span class="font-mono text-xs text-muted bg-paper border border-line px-2.5 py-1 rounded">05 / 10</span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto items-center">
+        <!-- SVG-схема параллельного подключения -->
+        <div class="anim-item delay-1 lg:col-span-8 bg-paper border border-line rounded-xl p-3 sm:p-4">
+          <svg viewBox="0 0 760 360" class="w-full h-auto">
+            <!-- Источник ~230 В -->
+            <circle cx="65" cy="185" r="28" fill="#FFFFFF" stroke="#141518" stroke-width="2.5"/>
+            <text x="65" y="193" text-anchor="middle" font-family="JetBrains Mono" font-size="24" font-weight="bold" fill="#141518">~</text>
+            <text x="65" y="135" text-anchor="middle" font-family="Inter" font-size="13" font-weight="bold" fill="#141518">Сеть</text>
+            <text x="65" y="152" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="bold" fill="#141518">230 В, 50 Гц</text>
+
+            <!-- Фазный провод от источника до автомата -->
+            <polyline points="65,157 65,70 130,70" fill="none" stroke="#141518" stroke-width="2.5"/>
+
+            <!-- Автомат 25 А -->
+            <rect x="130" y="46" width="84" height="48" rx="6" fill="#FFFFFF" stroke="#141518" stroke-width="2.5"/>
+            <text x="172" y="67" text-anchor="middle" font-family="Inter" font-size="12" font-weight="bold" fill="#141518">Автомат</text>
+            <text x="172" y="84" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="bold" fill="#141518">25 А</text>
+
+            <!-- Провод до удлинителя -->
+            <line x1="214" y1="70" x2="255" y2="70" stroke="#141518" stroke-width="2.5"/>
+
+            <!-- Пульсирующий красный резистор удлинителя R = 0,233 Ом -->
+            <rect x="255" y="50" width="110" height="40" rx="4" fill="#FFF5F5" stroke="#C82828" stroke-width="3" class="resistor-hot"/>
+            <text x="310" y="76" text-anchor="middle" font-family="JetBrains Mono" font-size="16" font-weight="bold" fill="#C82828">R</text>
+            <text x="310" y="24" text-anchor="middle" font-family="Inter" font-size="12" font-weight="bold" fill="#C82828">Удлинитель 0,75 мм², 5 м</text>
+            <text x="310" y="40" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="bold" fill="#C82828">R = 0,233 Ом</text>
+
+            <!-- Перегруженный общий участок шины (анимация) -->
+            <line x1="365" y1="70" x2="705" y2="70" stroke="#C82828" stroke-width="3.5" class="flow-overload"/>
+
+            <!-- Подпись перегрузки -->
+            <path d="M 275 145 L 310 96" stroke="#C82828" stroke-width="2" fill="none"/>
+            <polygon points="310,96 301,101 308,107" fill="#C82828"/>
+            <text x="145" y="165" font-family="Inter" font-size="12.5" font-weight="bold" fill="#C82828">Весь ток 27,6 А идёт</text>
+            <text x="145" y="182" font-family="Inter" font-size="12.5" font-weight="bold" fill="#C82828">через один тонкий шнур</text>
+
+            <!-- Нулевой провод снизу -->
+            <polyline points="65,213 65,315 705,315" fill="none" stroke="#141518" stroke-width="2.5"/>
+            <text x="195" y="338" font-family="Inter" font-size="12" fill="#5A606E">Нулевой провод (N)</text>
+
+            <!-- Ветвь 1: Чайник -->
+            <circle cx="410" cy="70" r="4" fill="#141518"/>
+            <line x1="410" y1="70" x2="410" y2="125" stroke="#141518" stroke-width="2" class="flow-branch"/>
+            <rect x="372" y="125" width="76" height="135" rx="6" fill="#FFFBEB" stroke="#141518" stroke-width="2"/>
+            <text x="410" y="175" text-anchor="middle" font-family="Inter" font-size="12" font-weight="bold" fill="#141518">Чайник</text>
+            <text x="410" y="195" text-anchor="middle" font-family="JetBrains Mono" font-size="11.5" fill="#141518">2000 Вт</text>
+            <text x="410" y="213" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="bold" fill="#D9531E">8,70 А</text>
+            <line x1="410" y1="260" x2="410" y2="315" stroke="#141518" stroke-width="2"/>
+            <circle cx="410" cy="315" r="4" fill="#141518"/>
+
+            <!-- Ветвь 2: Микроволновка -->
+            <circle cx="505" cy="70" r="4" fill="#141518"/>
+            <line x1="505" y1="70" x2="505" y2="125" stroke="#141518" stroke-width="2" class="flow-branch"/>
+            <rect x="467" y="125" width="76" height="135" rx="6" fill="#FFFBEB" stroke="#141518" stroke-width="2"/>
+            <text x="505" y="168" text-anchor="middle" font-family="Inter" font-size="11.5" font-weight="bold" fill="#141518">Микро-</text>
+            <text x="505" y="183" text-anchor="middle" font-family="Inter" font-size="11.5" font-weight="bold" fill="#141518">волновка</text>
+            <text x="505" y="202" text-anchor="middle" font-family="JetBrains Mono" font-size="11.5" fill="#141518">1200 Вт</text>
+            <text x="505" y="220" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="bold" fill="#D9531E">5,22 А</text>
+            <line x1="505" y1="260" x2="505" y2="315" stroke="#141518" stroke-width="2"/>
+            <circle cx="505" cy="315" r="4" fill="#141518"/>
+
+            <!-- Ветвь 3: Холодильник -->
+            <circle cx="600" cy="70" r="4" fill="#141518"/>
+            <line x1="600" y1="70" x2="600" y2="125" stroke="#141518" stroke-width="2" class="flow-branch"/>
+            <rect x="562" y="125" width="76" height="135" rx="6" fill="#FFFBEB" stroke="#141518" stroke-width="2"/>
+            <text x="600" y="168" text-anchor="middle" font-family="Inter" font-size="11.5" font-weight="bold" fill="#141518">Холо-</text>
+            <text x="600" y="183" text-anchor="middle" font-family="Inter" font-size="11.5" font-weight="bold" fill="#141518">дильник</text>
+            <text x="600" y="202" text-anchor="middle" font-family="JetBrains Mono" font-size="11.5" fill="#141518">150 Вт</text>
+            <text x="600" y="220" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="bold" fill="#1B7F5C">0,65 А</text>
+            <line x1="600" y1="260" x2="600" y2="315" stroke="#141518" stroke-width="2"/>
+            <circle cx="600" cy="315" r="4" fill="#141518"/>
+
+            <!-- Ветвь 4: Плита -->
+            <circle cx="695" cy="70" r="4" fill="#141518"/>
+            <line x1="695" y1="70" x2="695" y2="125" stroke="#141518" stroke-width="2" class="flow-branch"/>
+            <rect x="657" y="125" width="76" height="135" rx="6" fill="#FFFBEB" stroke="#C82828" stroke-width="2.5"/>
+            <text x="695" y="175" text-anchor="middle" font-family="Inter" font-size="12" font-weight="bold" fill="#141518">Плита</text>
+            <text x="695" y="195" text-anchor="middle" font-family="JetBrains Mono" font-size="11.5" fill="#141518">3000 Вт</text>
+            <text x="695" y="213" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="bold" fill="#C82828">13,04 А</text>
+            <line x1="695" y1="260" x2="695" y2="315" stroke="#141518" stroke-width="2"/>
+            <circle cx="695" cy="315" r="4" fill="#141518"/>
+          </svg>
+          <div class="text-xs text-center font-medium text-muted mt-1">
+            Параллельное подключение: напряжение на всех приборах <span class="font-mono text-ink font-semibold">230 В</span>, а токи складываются.
+          </div>
+        </div>
+
+        <!-- Правая колонка: Где какой ток и путь энергии -->
+        <div class="anim-item delay-2 lg:col-span-4 space-y-3">
+          <div class="bg-paper border border-line rounded-xl p-4 hover-lift">
+            <div class="font-mono text-xs font-bold uppercase text-ink mb-1.5 flex items-center gap-2">
+              <span class="px-1.5 py-0.5 bg-ink text-paper rounded">~</span> Переменный ток
+            </div>
+            <p class="text-xs sm:text-sm text-ink/85">
+              Сеть, провода, <strong>чайник и плита</strong> (ТЭНы греют напрямую от сети 230 В).
+            </p>
+          </div>
+
+          <div class="bg-paper border border-line rounded-xl p-4 hover-lift">
+            <div class="font-mono text-xs font-bold uppercase text-copper mb-1.5 flex items-center gap-2">
+              <span class="px-1.5 py-0.5 bg-copper text-white rounded">=</span> Постоянный ток
+            </div>
+            <p class="text-xs sm:text-sm text-ink/85">
+              <strong>Магнетрон</strong> микроволновки (высокое напряжение после выпрямителя), <strong>звено инвертора</strong> и платы управления холодильника.
+            </p>
+          </div>
+
+          <div class="bg-paper border border-line rounded-xl p-4 hover-lift">
+            <div class="font-mono text-xs font-bold uppercase text-muted mb-1.5">Путь электрической энергии</div>
+            <div class="font-mono text-xs text-ink leading-relaxed bg-white p-2.5 rounded border border-line">
+              Станция → ЛЭП → Подстанция → Счётчик → Щиток → Розетка → Прибор
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== СЛАЙД 6: РАСЧЁТЫ ==================== -->
+    <section class="slide flex-col justify-between min-h-[75vh] bg-card border border-line rounded-2xl p-6 sm:p-10 shadow-sm" data-title="Расчётная часть">
+      <div class="anim-item flex items-center justify-between border-b border-line pb-3 mb-4">
+        <div>
+          <span class="font-mono text-xs uppercase text-copper font-semibold">06 // Инженерные расчёты</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-ink">Расчёты параметров и потерь</h2>
+        </div>
+        <span class="font-mono text-xs text-muted bg-paper border border-line px-2.5 py-1 rounded">06 / 10</span>
+      </div>
+
+      <!-- 4 карточки с формулами и анимацией счёта -->
+      <div class="anim-item delay-1 grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+        <div class="bg-danger/5 border border-danger/30 rounded-xl p-3.5 hover-lift">
+          <div class="font-mono text-xs text-muted">I = P / U</div>
+          <div class="font-mono text-2xl sm:text-3xl font-extrabold text-danger my-0.5">
+            <span class="count-up" data-target="27.6" data-decimals="1">27,6</span> А
+          </div>
+          <div class="text-xs text-ink/80">суммарный ток (норма 10 А)</div>
+        </div>
+        <div class="bg-paper border border-line rounded-xl p-3.5 hover-lift">
+          <div class="font-mono text-xs text-muted">R = ρ · l / S</div>
+          <div class="font-mono text-2xl sm:text-3xl font-extrabold text-ink my-0.5">
+            <span class="count-up" data-target="0.233" data-decimals="3">0,233</span> Ом
+          </div>
+          <div class="text-xs text-ink/80">сопротивление (2 жилы = 10 м)</div>
+        </div>
+        <div class="bg-copper/10 border border-copper/30 rounded-xl p-3.5 hover-lift">
+          <div class="font-mono text-xs text-muted">P = I² · R</div>
+          <div class="font-mono text-2xl sm:text-3xl font-extrabold text-copper my-0.5">
+            <span class="count-up" data-target="178" data-decimals="0">178</span> Вт
+          </div>
+          <div class="text-xs text-ink/80">тепло в проводе впустую</div>
+        </div>
+        <div class="bg-paper border border-line rounded-xl p-3.5 hover-lift">
+          <div class="font-mono text-xs text-muted">ΔU = I · R</div>
+          <div class="font-mono text-2xl sm:text-3xl font-extrabold text-ink my-0.5">
+            <span class="count-up" data-target="6.4" data-decimals="1">6,4</span> В
+          </div>
+          <div class="text-xs text-ink/80">падение напряжения (2,8%)</div>
+        </div>
+      </div>
+
+      <!-- SVG-гистограмма с плавным ростом столбцов -->
+      <div class="anim-item delay-2 bg-paper border border-line rounded-xl p-3 sm:p-4 my-auto">
+        <svg viewBox="0 0 760 220" class="w-full h-auto max-h-[225px]">
+          <!-- Оси -->
+          <line x1="65" y1="20" x2="65" y2="185" stroke="#141518" stroke-width="1.5"/>
+          <line x1="65" y1="185" x2="735" y2="185" stroke="#141518" stroke-width="1.5"/>
+
+          <!-- Шкала Y (0..30 А => 185..35, масштаб 5px на 1А) -->
+          <text x="55" y="189" text-anchor="end" font-family="JetBrains Mono" font-size="11" fill="#5A606E">0 А</text>
+          <text x="55" y="139" text-anchor="end" font-family="JetBrains Mono" font-size="11" fill="#D9531E" font-weight="bold">10 А</text>
+          <text x="55" y="109" text-anchor="end" font-family="JetBrains Mono" font-size="11" fill="#1B7F5C" font-weight="bold">16 А</text>
+          <text x="55" y="89" text-anchor="end" font-family="JetBrains Mono" font-size="11" fill="#5A606E">20 А</text>
+          <text x="55" y="39" text-anchor="end" font-family="JetBrains Mono" font-size="11" fill="#5A606E">30 А</text>
+
+          <!-- Чайник: 8.7 А -> 43.5px -->
+          <rect x="100" y="141.5" width="74" height="43.5" rx="4" fill="#141518" class="bar-grow" style="transition-delay: 0.1s;"/>
+          <text x="137" y="134" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="bold" fill="#141518">8,7 А</text>
+          <text x="137" y="205" text-anchor="middle" font-family="Inter" font-size="12" font-weight="600" fill="#141518">Чайник</text>
+
+          <!-- Микроволновка: 5.2 А -> 26px -->
+          <rect x="225" y="159" width="74" height="26" rx="4" fill="#141518" class="bar-grow" style="transition-delay: 0.2s;"/>
+          <text x="262" y="151" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="bold" fill="#141518">5,2 А</text>
+          <text x="262" y="205" text-anchor="middle" font-family="Inter" font-size="12" font-weight="600" fill="#141518">Микроволновка</text>
+
+          <!-- Холодильник: 0.7 А -> 4px -->
+          <rect x="350" y="181" width="74" height="4" rx="2" fill="#141518" class="bar-grow" style="transition-delay: 0.3s;"/>
+          <text x="387" y="173" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="bold" fill="#141518">0,7 А</text>
+          <text x="387" y="205" text-anchor="middle" font-family="Inter" font-size="12" font-weight="600" fill="#141518">Холодильник</text>
+
+          <!-- Плита: 13.0 А -> 65px -->
+          <rect x="475" y="120" width="74" height="65" rx="4" fill="#141518" class="bar-grow" style="transition-delay: 0.4s;"/>
+          <text x="512" y="112" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="bold" fill="#141518">13,0 А</text>
+          <text x="512" y="205" text-anchor="middle" font-family="Inter" font-size="12" font-weight="600" fill="#141518">Плита</text>
+
+          <!-- ИТОГО: 27.6 А -> 138px -->
+          <rect x="615" y="47" width="84" height="138" rx="4" fill="#C82828" class="bar-grow" style="transition-delay: 0.55s;"/>
+          <text x="657" y="38" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="bold" fill="#C82828">27,6 А</text>
+          <text x="657" y="205" text-anchor="middle" font-family="Inter" font-size="12" font-weight="800" fill="#C82828">ИТОГО</text>
+
+          <!-- Линия 10 А (y = 135) -->
+          <line x1="65" y1="135" x2="735" y2="135" stroke="#D9531E" stroke-width="2" stroke-dasharray="8 5"/>
+          <rect x="275" y="122" width="195" height="18" rx="3" fill="#F7F6F2"/>
+          <text x="372" y="134" text-anchor="middle" font-family="Inter" font-size="11" font-weight="bold" fill="#D9531E">типовой удлинитель 10 А</text>
+
+          <!-- Линия 16 А (y = 105) -->
+          <line x1="65" y1="105" x2="735" y2="105" stroke="#1B7F5C" stroke-width="2" stroke-dasharray="8 5"/>
+          <rect x="275" y="92" width="195" height="18" rx="3" fill="#F7F6F2"/>
+          <text x="372" y="104" text-anchor="middle" font-family="Inter" font-size="11" font-weight="bold" fill="#1B7F5C">мощный удлинитель 16 А</text>
+        </svg>
+      </div>
+
+      <!-- Дополнительные факты внизу -->
+      <div class="anim-item delay-3 grid grid-cols-1 md:grid-cols-2 gap-3 mt-4 text-xs">
+        <div class="bg-paper border border-line rounded-lg p-3">
+          <strong>Расход и КПД:</strong> <span class="font-mono">6,6 кВт·ч/сут</span> (<span class="font-mono">198 кВт·ч</span> и <span class="font-mono">≈4950 тг/мес</span>); КПД чайника <span class="font-mono">80%</span>; ток короткого замыкания <span class="font-mono">≈314 А</span>.
+        </div>
+        <div class="bg-danger/5 border border-danger/25 rounded-lg p-3 text-ink">
+          <strong class="text-danger">Скорость нагрева:</strong> без теплоотвода изоляция нагреется на <span class="font-mono">+70 °C</span> за <span class="font-mono">≈10 с</span> (в реальности — считанные минуты). <span class="font-mono">+1000 Вт</span> дают <span class="font-mono">238 Вт</span> потерь (<span class="font-mono">+34%</span>).
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== СЛАЙД 7: ДВА ВАРИАНТА И СРАВНЕНИЕ ==================== -->
+    <section class="slide flex-col justify-between min-h-[75vh] bg-card border border-line rounded-2xl p-6 sm:p-10 shadow-sm" data-title="Варианты решения и сравнение">
+      <div class="anim-item flex items-center justify-between border-b border-line pb-3 mb-5">
+        <div>
+          <span class="font-mono text-xs uppercase text-safe font-semibold">07 // Поиск решения</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-ink">Два варианта решения и их сравнение</h2>
+        </div>
+        <span class="font-mono text-xs text-muted bg-paper border border-line px-2.5 py-1 rounded">07 / 10</span>
+      </div>
+
+      <!-- Карточки вариантов -->
+      <div class="anim-item delay-1 grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+        <div class="bg-paper border border-line rounded-xl p-4 hover-lift">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-mono text-xs font-bold uppercase px-2.5 py-0.5 rounded bg-copper/15 text-copper">Вариант А — Минимальный</span>
+            <span class="font-mono text-xs font-bold text-ink">Ток: 14,6 А</span>
+          </div>
+          <p class="text-sm text-ink/90 leading-relaxed">
+            Плита переносится в отдельную силовую розетку. Чайник, СВЧ и холодильник остаются на мощном удлинителе <strong class="font-mono">16 А (1,5 мм²)</strong> с автоматом. Загрузка удлинителя — <span class="font-mono font-semibold">91%</span>, запас небольшой.
+          </p>
+        </div>
+
+        <div class="bg-safe/5 border-2 border-safe rounded-xl p-4 hover-lift">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-mono text-xs font-bold uppercase px-2.5 py-0.5 rounded bg-safe text-white">Вариант Б — Три отдельные линии</span>
+            <span class="font-mono text-xs font-bold text-safe">Выбор проекта</span>
+          </div>
+          <p class="text-sm text-ink/90 leading-relaxed">
+            Плита, «чайник + СВЧ» и холодильник — каждый на своей линии от щитка со своим автоматом. На вводе устанавливается автомат <strong class="font-mono">32 А</strong> и <strong class="font-mono">УЗО 30 мА</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Сравнительная таблица -->
+      <div class="anim-item delay-2 overflow-x-auto border border-line rounded-xl my-auto">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-paper border-b border-line font-mono text-xs uppercase text-muted">
+              <th class="py-3 px-4">Критерий оценки</th>
+              <th class="py-3 px-4">Вариант А (Удлинитель 16 А + розетка)</th>
+              <th class="py-3 px-4 bg-safe/10 text-safe font-bold">Вариант Б (Три отдельные линии)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-line">
+            <tr class="hover:bg-paper/40 transition-colors">
+              <td class="py-2.5 px-4 font-semibold">Безопасность</td>
+              <td class="py-2.5 px-4 text-copper font-medium">Средняя (мал запас по току)</td>
+              <td class="py-2.5 px-4 bg-safe/5 text-safe font-bold">Высокая (свой автомат + УЗО)</td>
+            </tr>
+            <tr class="hover:bg-paper/40 transition-colors">
+              <td class="py-2.5 px-4 font-semibold">Потери в проводах</td>
+              <td class="py-2.5 px-4 font-mono">≈ 49 Вт</td>
+              <td class="py-2.5 px-4 bg-safe/5 font-mono">≈ 51 Вт</td>
+            </tr>
+            <tr class="hover:bg-paper/40 transition-colors">
+              <td class="py-2.5 px-4 font-semibold">Стоимость</td>
+              <td class="py-2.5 px-4 text-safe font-medium">Низкая</td>
+              <td class="py-2.5 px-4 bg-safe/5 text-muted">Выше (кабель, щиток, электрик)</td>
+            </tr>
+            <tr class="hover:bg-paper/40 transition-colors">
+              <td class="py-2.5 px-4 font-semibold">Все приборы вместе</td>
+              <td class="py-2.5 px-4 text-muted">С оглядкой (нужно следить)</td>
+              <td class="py-2.5 px-4 bg-safe/5 text-safe font-bold">Без ограничений</td>
+            </tr>
+            <tr class="hover:bg-paper/40 transition-colors">
+              <td class="py-2.5 px-4 font-semibold">Соответствие нормам ПУЭ</td>
+              <td class="py-2.5 px-4 text-copper font-medium">Частично</td>
+              <td class="py-2.5 px-4 bg-safe/5 text-safe font-bold">Полностью</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== СЛАЙД 8: ЭЛЕКТРОБЕЗОПАСНОСТЬ ==================== -->
+    <section class="slide flex-col justify-between min-h-[75vh] bg-card border border-line rounded-2xl p-6 sm:p-10 shadow-sm" data-title="Электробезопасность">
+      <div class="anim-item flex items-center justify-between border-b border-line pb-3 mb-5">
+        <div>
+          <span class="font-mono text-xs uppercase text-safe font-semibold">08 // Защита человека и сети</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-ink">Электробезопасность на кухне</h2>
+        </div>
+        <span class="font-mono text-xs text-muted bg-paper border border-line px-2.5 py-1 rounded">08 / 10</span>
+      </div>
+
+      <!-- 4 уровня защиты -->
+      <div class="anim-item delay-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
+        <div class="bg-paper border border-line rounded-xl p-4 hover-lift">
+          <span class="inline-block font-mono text-xs font-bold px-2 py-0.5 rounded bg-ink text-paper mb-2">01 // Автомат</span>
+          <p class="text-xs sm:text-sm text-ink/90">Отключает перегрузку и КЗ. Номинал выбирается строго по сечению кабеля.</p>
+        </div>
+        <div class="bg-paper border border-line rounded-xl p-4 hover-lift">
+          <span class="inline-block font-mono text-xs font-bold px-2 py-0.5 rounded bg-safe text-white mb-2">02 // УЗО 30 мА</span>
+          <p class="text-xs sm:text-sm text-ink/90">Отключает цепь за доли секунды при утечке тока на корпус или человека.</p>
+        </div>
+        <div class="bg-paper border border-line rounded-xl p-4 hover-lift">
+          <span class="inline-block font-mono text-xs font-bold px-2 py-0.5 rounded bg-copper text-white mb-2">03 // Заземление PE</span>
+          <p class="text-xs sm:text-sm text-ink/90">Отводит опасное напряжение с металлического корпуса плиты или чайника.</p>
+        </div>
+        <div class="bg-paper border border-line rounded-xl p-4 hover-lift">
+          <span class="inline-block font-mono text-xs font-bold px-2 py-0.5 rounded bg-ink text-paper mb-2">04 // Кабель и линии</span>
+          <p class="text-xs sm:text-sm text-ink/90">Сечение по таблице ПУЭ, мощные приборы — только на отдельные линии.</p>
+        </div>
+      </div>
+
+      <!-- Шкала воздействия тока на человека -->
+      <div class="anim-item delay-2 bg-paper border border-line rounded-xl p-4 mb-4 my-auto">
+        <div class="font-mono text-xs font-bold uppercase text-muted mb-3">Воздействие переменного тока на человека (на влажной кухне сопротивление кожи падает):</div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="bg-white border border-line rounded-lg p-3 flex items-center gap-3 hover-lift">
+            <span class="font-mono text-lg font-extrabold text-ink whitespace-nowrap">≈ 1 мА</span>
+            <span class="text-xs text-muted">Ощутимый ток (лёгкое покалывание)</span>
+          </div>
+          <div class="bg-copper/10 border border-copper/40 rounded-lg p-3 flex items-center gap-3 hover-lift">
+            <span class="font-mono text-lg font-extrabold text-copper whitespace-nowrap">10–15 мА</span>
+            <span class="text-xs text-ink font-medium">Неотпускающий ток (судороги мышц)</span>
+          </div>
+          <div class="bg-danger/10 border border-danger/40 rounded-lg p-3 flex items-center gap-3 hover-lift">
+            <span class="font-mono text-lg font-extrabold text-danger whitespace-nowrap">50–100 мА</span>
+            <span class="text-xs text-danger font-semibold">Фибрилляция сердца (смертельно)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Выделенный вывод про перегрузку -->
+      <div class="anim-item delay-3 bg-danger/10 border-l-4 border-danger rounded-r-xl p-4 text-sm text-ink">
+        <strong class="text-danger">Почему перегрузка коварнее короткого замыкания:</strong> при КЗ (<span class="font-mono">≈314 А</span>) автомат <span class="font-mono">25 А</span> сработает за доли секунды. А вот перегрузку <span class="font-mono">27,6 А</span> он может «не замечать» десятки минут, пока удлинитель плавится.
+      </div>
+    </section>
+
+    <!-- ==================== СЛАЙД 9: ВЫБРАННОЕ РЕШЕНИЕ (ВАРИАНТ Б) ==================== -->
+    <section class="slide flex-col justify-between min-h-[75vh] bg-card border border-line rounded-2xl p-6 sm:p-10 shadow-sm" data-title="Выбранное решение">
+      <div class="anim-item flex items-center justify-between border-b border-line pb-3 mb-4">
+        <div>
+          <span class="font-mono text-xs uppercase text-safe font-semibold">09 // Итоговая архитектура</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-ink">Выбранное решение — Вариант Б</h2>
+        </div>
+        <span class="font-mono text-xs text-muted bg-paper border border-line px-2.5 py-1 rounded">09 / 10</span>
+      </div>
+
+      <!-- SVG-схема щитка и 3 линий с бегущим зелёным током -->
+      <div class="anim-item delay-1 bg-paper border border-line rounded-xl p-3 sm:p-4 mb-4 my-auto">
+        <svg viewBox="0 0 760 250" class="w-full h-auto max-h-[245px]">
+          <!-- Ввод -->
+          <rect x="20" y="95" width="110" height="60" rx="6" fill="#FFFFFF" stroke="#141518" stroke-width="2"/>
+          <text x="75" y="121" text-anchor="middle" font-family="Inter" font-size="12" font-weight="bold" fill="#141518">Ввод 230 В</text>
+          <text x="75" y="140" text-anchor="middle" font-family="Inter" font-size="12" fill="#5A606E">Счётчик</text>
+
+          <line x1="130" y1="125" x2="170" y2="125" stroke="#1B7F5C" stroke-width="2.5" class="flow-safe"/>
+
+          <!-- Вводной автомат + УЗО -->
+          <rect x="170" y="85" width="150" height="80" rx="6" fill="#FFFBEB" stroke="#141518" stroke-width="2.5"/>
+          <text x="245" y="112" text-anchor="middle" font-family="Inter" font-size="12" font-weight="bold" fill="#141518">Вводной автомат</text>
+          <text x="245" y="130" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="bold" fill="#1B7F5C">32 А + УЗО 30 мА</text>
+          <text x="245" y="150" text-anchor="middle" font-family="Inter" font-size="11" fill="#5A606E">Заземление (PE)</text>
+
+          <!-- Шина распределения -->
+          <line x1="320" y1="125" x2="365" y2="125" stroke="#1B7F5C" stroke-width="2.5"/>
+          <line x1="365" y1="42" x2="365" y2="208" stroke="#1B7F5C" stroke-width="2.5"/>
+
+          <!-- Линия 1: Плита -->
+          <line x1="365" y1="42" x2="405" y2="42" stroke="#1B7F5C" stroke-width="2" class="flow-safe"/>
+          <rect x="405" y="16" width="155" height="52" rx="6" fill="#ECFDF5" stroke="#1B7F5C" stroke-width="2"/>
+          <text x="482" y="38" text-anchor="middle" font-family="Inter" font-size="12" font-weight="bold" fill="#141518">Автомат 16 А</text>
+          <text x="482" y="56" text-anchor="middle" font-family="JetBrains Mono" font-size="11.5" fill="#1B7F5C">кабель 2,5 мм²</text>
+          <line x1="560" y1="42" x2="590" y2="42" stroke="#1B7F5C" stroke-width="2" class="flow-safe"/>
+          <rect x="590" y="16" width="150" height="52" rx="6" fill="#FFFFFF" stroke="#141518" stroke-width="2"/>
+          <text x="665" y="38" text-anchor="middle" font-family="Inter" font-size="12" font-weight="bold" fill="#141518">Плита 3000 Вт</text>
+          <text x="665" y="56" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="bold" fill="#141518">13,0 А</text>
+
+          <!-- Линия 2: Чайник + СВЧ -->
+          <line x1="365" y1="125" x2="405" y2="125" stroke="#1B7F5C" stroke-width="2" class="flow-safe"/>
+          <rect x="405" y="99" width="155" height="52" rx="6" fill="#ECFDF5" stroke="#1B7F5C" stroke-width="2"/>
+          <text x="482" y="121" text-anchor="middle" font-family="Inter" font-size="12" font-weight="bold" fill="#141518">Автомат 16 А</text>
+          <text x="482" y="139" text-anchor="middle" font-family="JetBrains Mono" font-size="11.5" fill="#1B7F5C">кабель 2,5 мм²</text>
+          <line x1="560" y1="125" x2="590" y2="125" stroke="#1B7F5C" stroke-width="2" class="flow-safe"/>
+          <rect x="590" y="99" width="150" height="52" rx="6" fill="#FFFFFF" stroke="#141518" stroke-width="2"/>
+          <text x="665" y="121" text-anchor="middle" font-family="Inter" font-size="12" font-weight="bold" fill="#141518">Чайник + СВЧ</text>
+          <text x="665" y="139" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="bold" fill="#141518">3200 Вт • 13,9 А</text>
+
+          <!-- Линия 3: Холодильник -->
+          <line x1="365" y1="208" x2="405" y2="208" stroke="#1B7F5C" stroke-width="2" class="flow-safe"/>
+          <rect x="405" y="182" width="155" height="52" rx="6" fill="#ECFDF5" stroke="#1B7F5C" stroke-width="2"/>
+          <text x="482" y="204" text-anchor="middle" font-family="Inter" font-size="12" font-weight="bold" fill="#141518">Автомат 10 А</text>
+          <text x="482" y="222" text-anchor="middle" font-family="JetBrains Mono" font-size="11.5" fill="#1B7F5C">кабель 1,5 мм²</text>
+          <line x1="560" y1="208" x2="590" y2="208" stroke="#1B7F5C" stroke-width="2" class="flow-safe"/>
+          <rect x="590" y="182" width="150" height="52" rx="6" fill="#FFFFFF" stroke="#141518" stroke-width="2"/>
+          <text x="665" y="204" text-anchor="middle" font-family="Inter" font-size="12" font-weight="bold" fill="#141518">Холодильник</text>
+          <text x="665" y="222" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="bold" fill="#141518">150 Вт • 0,65 А</text>
+        </svg>
+      </div>
+
+      <!-- 3 шага и 3 результата -->
+      <div class="anim-item delay-2 grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div class="bg-paper border border-line rounded-xl p-3.5">
+          <div class="font-mono text-xs font-bold uppercase text-ink mb-2">План действий по шагам:</div>
+          <div class="grid grid-cols-3 gap-2 text-xs">
+            <div class="bg-white border border-line rounded-lg p-2.5 hover-lift">
+              <span class="font-mono font-bold text-danger">1. Сразу</span>
+              <div class="mt-0.5 text-muted">Отключить плиту от удлинителя</div>
+            </div>
+            <div class="bg-white border border-line rounded-lg p-2.5 hover-lift">
+              <span class="font-mono font-bold text-copper">2. Временно</span>
+              <div class="mt-0.5 text-muted">Мощный удлинитель 16 А (вар. А)</div>
+            </div>
+            <div class="bg-white border border-line rounded-lg p-2.5 hover-lift">
+              <span class="font-mono font-bold text-safe">3. Затем</span>
+              <div class="mt-0.5 text-muted">Электрик: 3 линии, автоматы, УЗО</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-safe/10 border border-safe/30 rounded-xl p-3.5 flex items-center justify-around text-center">
+          <div>
+            <div class="font-mono text-base sm:text-lg font-extrabold text-safe">178 → <span class="count-up" data-target="51" data-decimals="0">51</span> Вт</div>
+            <div class="text-[11px] text-muted">потери в проводах</div>
+          </div>
+          <div class="h-8 w-px bg-safe/30"></div>
+          <div>
+            <div class="font-mono text-base sm:text-lg font-extrabold text-ink">≤ 14 А</div>
+            <div class="text-[11px] text-muted">ток каждой линии</div>
+          </div>
+          <div class="h-8 w-px bg-safe/30"></div>
+          <div>
+            <div class="font-mono text-base sm:text-lg font-extrabold text-safe">УЗО 30 мА</div>
+            <div class="text-[11px] text-muted">защита человека</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== СЛАЙД 10: СОБСТВЕННОЕ МНЕНИЕ И ВЫВОД ==================== -->
+    <section class="slide flex-col justify-between min-h-[75vh] bg-card border border-line rounded-2xl p-6 sm:p-10 shadow-sm" data-title="Собственное мнение и вывод">
+      <div class="anim-item flex items-center justify-between border-b border-line pb-3 mb-6">
+        <div>
+          <span class="font-mono text-xs uppercase text-safe font-semibold">10 // Итоги работы</span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-ink">Собственное мнение и вывод</h2>
+        </div>
+        <span class="font-mono text-xs text-muted bg-paper border border-line px-2.5 py-1 rounded">10 / 10</span>
+      </div>
+
+      <!-- Главная цитата -->
+      <blockquote class="anim-item delay-1 bg-paper border-l-4 border-copper rounded-r-xl p-6 sm:p-8 my-auto hover-lift">
+        <p class="text-lg sm:text-2xl font-bold text-ink leading-snug mb-4">
+          «Опасность создаёт не сам прибор, а неправильная схема его подключения. Те же чайник и плита безопасны на своих линиях и опасны, когда их включают “как удобно”».
+        </p>
+        <footer class="text-sm sm:text-base font-semibold text-copper">
+          Наше мнение: безопасность — это не дополнительная опция, а базовое условие, при котором электроприборами вообще можно пользоваться.
+        </footer>
+      </blockquote>
+
+      <!-- 3 итоговых блока -->
+      <div class="anim-item delay-2 grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+        <div class="bg-paper border border-line rounded-xl p-4 hover-lift">
+          <div class="font-mono text-xs font-bold uppercase text-danger mb-1">1. Расчёт доказал</div>
+          <div class="text-sm text-ink/90">Ток <strong class="font-mono">27,6 А</strong> в 2,8 раза выше нормы удлинителя: исходная схема пожароопасна.</div>
+        </div>
+        <div class="bg-safe/5 border border-safe/30 rounded-xl p-4 hover-lift">
+          <div class="font-mono text-xs font-bold uppercase text-safe mb-1">2. Лучшее решение</div>
+          <div class="text-sm text-ink/90">Три отдельные линии от щитка со своими автоматами, заземлением и <strong>УЗО 30 мА</strong>.</div>
+        </div>
+        <div class="bg-paper border border-line rounded-xl p-4 hover-lift">
+          <div class="font-mono text-xs font-bold uppercase text-muted mb-1">3. Честный недостаток</div>
+          <div class="text-sm text-ink/90">Вариант Б дороже и требует работы электрика, но это в разы дешевле последствий пожара.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Нижняя панель навигации -->
+  <footer class="w-full border-t border-line bg-paper/95 backdrop-blur-sm px-4 sm:px-8 py-3 flex items-center justify-between z-40">
+    <button id="prevBtn" onclick="changeSlide(-1)"
+      class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-line bg-white text-sm font-semibold text-ink hover:border-ink disabled:opacity-40 disabled:pointer-events-none transition-colors cursor-pointer">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+      </svg>
+      <span>Назад</span>
+    </button>
+
+    <!-- Кликабельные точки навигации по слайдам -->
+    <div id="slideDots" class="flex items-center gap-1.5 sm:gap-2">
+      <!-- Генерируются JS -->
+    </div>
+
+    <button id="nextBtn" onclick="changeSlide(1)"
+      class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-ink bg-ink text-sm font-semibold text-paper hover:bg-copper hover:border-copper disabled:opacity-40 disabled:pointer-events-none transition-colors cursor-pointer">
+      <span>Далее</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </footer>
+
+  <script>
+    // Данные приборов для интерактивного симулятора на Слайде 4
+    const appliances = [
+      { id: 'kettle', name: 'Электрочайник', power: 2000, hours: '0,3', active: true },
+      { id: 'microwave', name: 'Микроволновая печь', power: 1200, hours: '0,25', active: true },
+      { id: 'fridge', name: 'Холодильник', power: 150, hours: '≈ 8', active: true },
+      { id: 'stove', name: 'Электроплита (2 конфорки)', power: 3000, hours: '1,5', active: true }
+    ];
+
+    const VOLTAGE = 230;
+    const EXT_RESISTANCE = 0.233; // Ом (5 м туда и обратно = 10 м)
+    const EXT_MAX_CURRENT = 10;   // А
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    // Рендер интерактивной таблицы на Слайде 4
+    function renderSimulator() {
+      const tbody = document.getElementById('applianceTableBody');
+      tbody.innerHTML = '';
+
+      let totalPower = 0;
+      let totalCurrent = 0;
+
+      appliances.forEach((item, index) => {
+        const current = item.power / VOLTAGE;
+        if (item.active) {
+          totalPower += item.power;
+          totalCurrent += current;
+        }
+
+        const tr = document.createElement('tr');
+        tr.className = `cursor-pointer transition-colors ${item.active ? 'bg-white hover:bg-paper/80' : 'bg-paper/50 text-muted'}`;
+        tr.onclick = () => toggleAppliance(index);
+
+        tr.innerHTML = `
+          <td class="py-2.5 px-3">
+            <span class="inline-flex items-center gap-1.5 font-mono text-xs font-bold px-2.5 py-0.5 rounded border transition-colors ${
+              item.active
+                ? 'bg-safe/10 border-safe/40 text-safe'
+                : 'bg-paper border-line text-muted'
+            }">
+              <span class="w-2 h-2 rounded-full ${item.active ? 'bg-safe' : 'bg-muted/40'}"></span>
+              ${item.active ? 'ВКЛ' : 'ВЫКЛ'}
+            </span>
+          </td>
+          <td class="py-2.5 px-3 font-medium ${item.active ? 'text-ink' : 'line-through text-muted'}">${item.name}</td>
+          <td class="py-2.5 px-3 text-right font-mono">${item.power} Вт</td>
+          <td class="py-2.5 px-3 text-right font-mono font-semibold ${item.active ? 'text-ink' : 'text-muted'}">${current.toFixed(2).replace('.', ',')} А</td>
+          <td class="py-2.5 px-3 text-right font-mono text-xs text-muted hidden sm:table-cell">${item.hours} ч</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      const heatLoss = Math.round(totalCurrent * totalCurrent * EXT_RESISTANCE);
+      const ratioPercent = Math.round((totalCurrent / EXT_MAX_CURRENT) * 100);
+      const isOverload = totalCurrent > EXT_MAX_CURRENT;
+      const isWarning = !isOverload && totalCurrent > 8;
+
+      document.getElementById('simTotalPower').textContent = `${totalPower} Вт`;
+      document.getElementById('simTotalCurrent').textContent = `${totalCurrent.toFixed(2).replace('.', ',')} А`;
+      document.getElementById('simHeatLoss').textContent = `${heatLoss} Вт`;
+      document.getElementById('simRatioLabel').textContent = `${ratioPercent}%`;
+
+      const fillWidth = Math.min((totalCurrent / 30) * 100, 100);
+      const barFill = document.getElementById('simBarFill');
+      const totalRow = document.getElementById('simTotalRow');
+      const statusBadge = document.getElementById('simStatusBadge');
+      const meterCard = document.getElementById('simMeterCard');
+      const ratioLabel = document.getElementById('simRatioLabel');
+      const heatEl = document.getElementById('simHeatLoss');
+
+      barFill.style.width = `${fillWidth}%`;
+
+      if (isOverload) {
+        totalRow.className = 'bg-danger/10 border-t-2 border-danger font-bold transition-colors';
+        statusBadge.className = 'py-3 px-3 font-mono text-xs uppercase text-danger';
+        statusBadge.textContent = 'ПЕРЕГРУЗКА';
+        meterCard.className = 'border-2 border-danger bg-danger/5 rounded-xl p-4 transition-all duration-300 danger-pulse';
+        barFill.className = 'h-full bg-danger transition-all duration-300';
+        ratioLabel.className = 'font-mono text-xs font-bold px-2 py-0.5 rounded bg-danger text-white';
+        heatEl.className = 'font-mono font-bold text-danger text-sm';
+      } else if (isWarning) {
+        totalRow.className = 'bg-copper/10 border-t-2 border-copper font-bold transition-colors';
+        statusBadge.className = 'py-3 px-3 font-mono text-xs uppercase text-copper';
+        statusBadge.textContent = 'НА ПРЕДЕЛЕ';
+        meterCard.className = 'border-2 border-copper bg-copper/5 rounded-xl p-4 transition-all duration-300';
+        barFill.className = 'h-full bg-copper transition-all duration-300';
+        ratioLabel.className = 'font-mono text-xs font-bold px-2 py-0.5 rounded bg-copper text-white';
+        heatEl.className = 'font-mono font-bold text-copper text-sm';
+      } else {
+        totalRow.className = 'bg-safe/10 border-t-2 border-safe font-bold transition-colors';
+        statusBadge.className = 'py-3 px-3 font-mono text-xs uppercase text-safe';
+        statusBadge.textContent = 'НОРМА (≤10 А)';
+        meterCard.className = 'border-2 border-safe bg-safe/5 rounded-xl p-4 transition-all duration-300';
+        barFill.className = 'h-full bg-safe transition-all duration-300';
+        ratioLabel.className = 'font-mono text-xs font-bold px-2 py-0.5 rounded bg-safe text-white';
+        heatEl.className = 'font-mono font-bold text-safe text-sm';
+      }
+    }
+
+    function toggleAppliance(index) {
+      appliances[index].active = !appliances[index].active;
+      renderSimulator();
+    }
+
+    function resetSimulator() {
+      appliances.forEach(a => a.active = true);
+      renderSimulator();
+    }
+
+    // Анимация счётчика чисел при открытии слайда
+    function animateCounters(slideElement) {
+      const counters = slideElement.querySelectorAll('.count-up');
+      counters.forEach(counter => {
+        const target = parseFloat(counter.dataset.target);
+        const decimals = parseInt(counter.dataset.decimals || '0', 10);
+        const duration = 650;
+        const startTime = performance.now();
+
+        function update(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Плавное замедление (easeOutCubic)
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const currentVal = target * eased;
+          counter.textContent = currentVal.toFixed(decimals).replace('.', ',');
+
+          if (progress < 1) {
+            requestAnimationFrame(update);
+          } else {
+            counter.textContent = target.toFixed(decimals).replace('.', ',');
+          }
+        }
+        requestAnimationFrame(update);
+      });
+    }
+
+    // Инициализация точек навигации
+    function initDots() {
+      const dotsContainer = document.getElementById('slideDots');
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < totalSlides; i++) {
+        const btn = document.createElement('button');
+        btn.onclick = () => goToSlide(i);
+        btn.title = `Слайд ${i + 1}: ${slides[i].dataset.title}`;
+        btn.className = 'h-2.5 rounded-full transition-all duration-200 cursor-pointer';
+        dotsContainer.appendChild(btn);
+      }
+    }
+
+    // Обновление отображения слайда
+    function updateUI() {
+      slides.forEach((slide, idx) => {
+        const isActive = idx === currentSlide;
+        slide.classList.toggle('active', isActive);
+        if (isActive) {
+          animateCounters(slide);
+        }
+      });
+
+      const progress = ((currentSlide + 1) / totalSlides) * 100;
+      document.getElementById('progressBar').style.width = `${progress}%`;
+
+      const title = slides[currentSlide].dataset.title;
+      document.getElementById('headerSlideTitle').textContent = `${currentSlide + 1}. ${title}`;
+      document.getElementById('headerCounter').textContent = `${String(currentSlide + 1).padStart(2, '0')} / ${totalSlides}`;
+
+      const dots = document.getElementById('slideDots').children;
+      for (let i = 0; i < dots.length; i++) {
+        if (i === currentSlide) {
+          dots[i].className = 'w-7 h-2.5 rounded-full bg-copper transition-all duration-200 cursor-pointer';
+        } else {
+          dots[i].className = 'w-2.5 h-2.5 rounded-full bg-line hover:bg-muted transition-all duration-200 cursor-pointer';
+        }
+      }
+
+      document.getElementById('prevBtn').disabled = currentSlide === 0;
+      document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+    }
+
+    function changeSlide(delta) {
+      const next = currentSlide + delta;
+      if (next >= 0 && next < totalSlides) {
+        currentSlide = next;
+        updateUI();
+      }
+    }
+
+    function goToSlide(index) {
+      if (index >= 0 && index < totalSlides) {
+        currentSlide = index;
+        updateUI();
+      }
+    }
+
+    // Управление с клавиатуры
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+        e.preventDefault();
+        changeSlide(1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        changeSlide(-1);
+      }
+    });
+
+    // Поддержка свайпов на телефоне и планшете
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) changeSlide(1);
+        else changeSlide(-1);
+      }
+    }, { passive: true });
+
+    // Запуск при загрузке
+    window.addEventListener('DOMContentLoaded', () => {
+      renderSimulator();
+      initDots();
+      updateUI();
+    });
+  </script>
+</body>
+</html>
